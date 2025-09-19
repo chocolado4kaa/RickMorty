@@ -1,6 +1,7 @@
 import './App.scss'
-import Header from './sections/Header/Header'
-import Hero from './sections/Hero/Hero'
+import Characters from './components/sections/Characters/Characters'
+import Header from './components/sections/Header/Header'
+import Hero from './components/sections/Hero/Hero'
 
 function App() {
 
@@ -8,6 +9,7 @@ function App() {
     <>
       <Header />
       <Hero />
+      <Characters />
     </>
   )
 }
