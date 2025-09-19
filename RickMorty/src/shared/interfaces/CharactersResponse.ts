@@ -1,4 +1,4 @@
-import { type Characters } from "./Characters";
+import type { Characters } from "./Characters";
 export interface CharactersResponse {
   info: {
     count: number;

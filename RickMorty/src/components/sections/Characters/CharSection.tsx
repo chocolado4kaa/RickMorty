@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchCharacters } from "../../../services/api";
+import Card from "../../common/Card";
 
-const Characters = () => {
+const CharSection = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["characters"],
     queryFn: fetchCharacters,
@@ -12,17 +13,14 @@ const Characters = () => {
   console.log(data);
   
   return (
-    <section>
-      Characters
-      <ul>
+    <section className="char-section section">
+      <h2 id="chars">Characters</h2>
+      <div className="list">
         {data?.results.map((char) => (
-          <li key={char.id}>
-            <img src={char.image} alt={char.name} width={50} />
-            {char.name}
-          </li>
+          <Card char={char} key={char.id} />
         ))}
-      </ul>
+      </div>
     </section>
   );
 };
-export default Characters;
+export default CharSection;
