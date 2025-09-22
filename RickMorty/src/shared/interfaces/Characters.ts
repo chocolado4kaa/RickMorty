@@ -7,4 +7,8 @@ export interface Characters {
   gender: string;
   origin: { name: string; url: string };
   location: { name: string; url: string };
+  created: string;
+  episode: string[];
+  url: string;
+  type: string;
 }
