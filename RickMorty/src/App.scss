@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 #root {
   margin: 0 auto;
@@ -23,21 +23,19 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-.section{
+.section {
   max-width: 120rem;
   display: flex;
   margin: 4rem auto;
   flex-direction: column;
-  &.char-section{
-    h2{
-      font-family: "Bangers", system-ui;
-      font-size: 3rem;
-      margin:0 0 4rem;
-    }
+  h2 {
+    font-family: "Bangers", system-ui;
+    font-size: 3rem;
+    margin: 0 0 2rem;
   }
 }
 
-.list{
+.list {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;

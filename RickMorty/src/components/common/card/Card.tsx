@@ -1,11 +1,7 @@
 import styles from "./card.module.scss";
 import type { Characters } from "../../../shared/interfaces/Characters";
 
-type CardProps = {
-  char: Characters;
-};
-
-export const Card = ({ char }: CardProps) => {
+export const Card = (char: Characters) => {
   const { created, episode, url, type, ...clean } = char;
   const { id, name, image, ...info } = clean;
 

@@ -1,0 +1,25 @@
+.paginator{
+    display: flex;
+    gap: 1rem;
+    padding: 0; 
+    align-items: center;
+    button{
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        &:hover{
+            background-color: #15151563;
+        }
+        &:disabled{
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        span{
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-weight: 1;
+        }
+    }
+}
