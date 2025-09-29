@@ -1,0 +1,17 @@
+.hero {
+  width: 100vw;
+  height: 100vh;
+  background: url("./images/back-ground.jpeg") no-repeat center center/cover;
+  -webkit-box-shadow: inset 0px 5px 20px 15px #000000;
+  box-shadow: inset 0px 5px 20px 15px #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .content h1 {
+    font-family: "Space Mono", monospace;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 5rem;
+    color: #ffffffc4;
+  }
+}
