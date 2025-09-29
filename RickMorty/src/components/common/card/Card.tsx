@@ -2,8 +2,8 @@ import styles from "./card.module.scss";
 import type { Characters } from "../../../shared/interfaces/Characters";
 
 export const Card = (char: Characters) => {
-  const { created, episode, url, type, ...clean } = char;
-  const { id, name, image, ...info } = clean;
+  const { created, episode, url, type, ...rest } = char;
+  const { id, name, image, ...info } = rest;
 
   const displayableValue = (value: unknown) => {
     return value && typeof value === "object" && "name" in value
