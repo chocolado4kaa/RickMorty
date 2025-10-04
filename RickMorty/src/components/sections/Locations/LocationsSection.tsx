@@ -24,8 +24,18 @@ export const LocationsSection = () => {
   if (isLoading) return <p>{PageText.loading}</p>;
   if (error) return <p>{PageText.error}</p>;
 
-  const keys = Object.keys(data?.results[0] || {})
-    .filter((key) => key !== "id" && key !== "url" && key !== "created") as (keyof Locations)[];
+  const keys = Object.keys(data?.results[0] || {}).filter(
+    (key) => key !== "id" && key !== "url" && key !== "created"
+  ) as (keyof Locations)[];
+
+  const paginator = (
+  <PaginatorDiv
+    page={page}
+    info={data?.info}
+    onPrev={() => setPage((p) => p - 1)}
+    onNext={() => setPage((p) => p + 1)}
+  />
+);
 
   return (
     <Section title={SectionHeaders.locations}>
@@ -38,15 +48,11 @@ export const LocationsSection = () => {
         placeholder="Search by name… (e.g., Earth)"
         label="Search locations"
       />
+      {paginator}
       <div className="list">
         <Table data={data?.results || []} columns={keys} />
       </div>
-      <PaginatorDiv
-        page={page}
-        info={data?.info}
-        onPrev={() => setPage((p) => p - 1)}
-        onNext={() => setPage((p) => p + 1)}
-      />
+      {paginator}
     </Section>
   );
 };

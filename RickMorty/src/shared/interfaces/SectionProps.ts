@@ -1,6 +1,7 @@
-import type {SectionHeaderProps} from "./SectionHeaderProps";
-
 export type SectionProps = {
-  title: SectionHeaderProps;
+  title: {
+    id: string;
+    text: string;
+  };
   children?: React.ReactNode;
 };
