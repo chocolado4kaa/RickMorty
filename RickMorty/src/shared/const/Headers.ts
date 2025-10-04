@@ -1,6 +1,4 @@
-import type { SectionHeaderProps } from "../interfaces/SectionHeaderProps";
-
-export const SectionHeaders: Record<string, SectionHeaderProps>  = {
+export const SectionHeaders = {
   characters: { id: "characters", text: "Characters" },
   locations: { id: "locations", text: "Locations" },
   episodes: { id: "episodes", text: "Episodes" },

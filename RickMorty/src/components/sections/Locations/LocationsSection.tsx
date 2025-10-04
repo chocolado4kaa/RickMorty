@@ -39,7 +39,7 @@ export const LocationsSection = () => {
         label="Search locations"
       />
       <div className="list">
-        <Table title="Locations" data={data?.results || []} columns={keys} />
+        <Table data={data?.results || []} columns={keys} />
       </div>
       <PaginatorDiv
         page={page}

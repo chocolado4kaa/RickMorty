@@ -23,7 +23,9 @@
   margin: 4rem auto;
   flex-direction: column;
   padding: 0 4rem;
-  .container{
+  width: 100%;
+  box-sizing: border-box;
+  .container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,6 +48,7 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  width: 100%;
 }
 
 @keyframes logo-spin {
