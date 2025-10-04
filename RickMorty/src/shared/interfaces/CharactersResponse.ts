@@ -1,10 +1,6 @@
 import type { Characters } from "./Characters";
+import type { Info } from "./Info";
 export interface CharactersResponse {
-  info: {
-    count: number;
-    pages: number;
-    next: string | null;
-    prev: string | null;
-  };
+  info: Info;
   results: Characters[];
 }
