@@ -1,10 +1,12 @@
 import { URLS } from "../shared/const/ApiLinks";
 import type { CharactersResponse } from "../shared/interfaces/CharactersResponse";
 import type { LocationsResponse } from "../shared/interfaces/LocationsResponse";
+import type { EpisodesResponse } from "../shared/interfaces/EpisodesResponse";
 
 type ResponsesMap = {
   [URLS.CHARACTERS]: CharactersResponse;
   [URLS.LOCATIONS]: LocationsResponse;
+  [URLS.EPISODES]: EpisodesResponse;
 };
 
 export async function fetchData<E extends keyof ResponsesMap>(
