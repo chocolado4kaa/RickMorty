@@ -3,7 +3,7 @@ import { CharSection } from "./components/sections/Characters/CharSection";
 import { Header } from "./components/sections/Header/Header";
 import { Hero } from "./components/sections/Hero/Hero";
 import { LocationsSection } from "./components/sections/Locations/LocationsSection";
-import { EpisodesSections } from "./components/sections/Episodes/EpisodesSection";
+import { EpisodesSection } from "./components/sections/Episodes/EpisodesSection";
 
 function App() {
   
@@ -13,7 +13,7 @@ function App() {
       <Hero />
       <CharSection />
       <LocationsSection />
-      <EpisodesSections />
+      <EpisodesSection />
     </>
   );
 }
