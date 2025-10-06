@@ -4,10 +4,8 @@ import type { EpisodesResponse } from "../../../shared/interfaces/EpisodesRespon
 import type { Episodes } from "../../../shared/interfaces/Episodes";
 import DataTableSection from "../../common/DataTableSection/DataTableSection";
 
-export const EpisodesSection = () => (
-  <DataTableSection<Episodes, EpisodesResponse>
-    title="episodes"
-    apiUrl={URLS.EPISODES}
-    sectionHeader={SectionHeaders.episodes}
-  />
-);
+export const EpisodesSection = DataTableSection<Episodes, EpisodesResponse>({
+  title: "episodes",
+  apiUrl: URLS.EPISODES,
+  sectionHeader: SectionHeaders.episodes,
+});

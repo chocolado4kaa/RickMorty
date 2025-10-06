@@ -4,10 +4,8 @@ import type { LocationsResponse } from "../../../shared/interfaces/LocationsResp
 import type { Locations } from "../../../shared/interfaces/Locations";
 import DataTableSection from "../../common/DataTableSection/DataTableSection";
 
-export const LocationsSection = () => (
-  <DataTableSection<Locations, LocationsResponse>
-    title="locations"
-    apiUrl={URLS.LOCATIONS}
-    sectionHeader={SectionHeaders.locations}
-  />
-);
+export const LocationsSection = DataTableSection<Locations, LocationsResponse>({
+  title: "locations",
+  apiUrl: URLS.LOCATIONS,
+  sectionHeader: SectionHeaders.locations
+});
