@@ -1,14 +1,17 @@
 import styles from "./header.module.scss";
-import { SectionHeaders } from "../../../shared/const/Headers";
 
-export const Header = () => {
+export const Header = ({
+  headers,
+}: {
+  headers: {href: string; id: string; text: string }[];
+}) => {
   return (
     <header className={styles.header}>
       <nav className={styles.navbar}>
         <ul>
-          {Object.entries(SectionHeaders).map(([key, header]) => (
-            <li key={key}>
-              <a href={`#${header.id}`}>{header.text}</a>
+          {headers.map((header) => (
+            <li key={header.id}>
+              <a href={`${header.href}`}>{header.text}</a>
             </li>
           ))}
         </ul>

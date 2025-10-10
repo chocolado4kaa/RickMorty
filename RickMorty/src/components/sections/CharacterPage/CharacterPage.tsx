@@ -6,8 +6,8 @@ import styles from "./characterPage.module.scss";
 import { Table } from "../../common/table/table";
 import { Info } from "../../common/Info/Info";
 import { renderObject } from "../../../services/RenderCharacter";
-import { CharacterInfoTitles } from "../../../shared/const/CharacterInfoTitles";
 import { getCharacterInfo } from "../../../shared/const/getCharacterInfo";
+import { SectionHeaders } from "../../../shared/const/Headers";
 
 export const CharacterPageComponent = ({id}: {id: number}) => {
   const { data: character, isLoading: charLoading } = useCharacter(id);
@@ -19,7 +19,7 @@ export const CharacterPageComponent = ({id}: {id: number}) => {
   if (!character) return <p>Character not found</p>;
 
   const infoItems = getCharacterInfo(character, origin, location, episodes);
-  const titles = CharacterInfoTitles(character.name);
+  const titles = SectionHeaders(character.name);
 
   const CharDetails = () => {
     return (
@@ -54,11 +54,11 @@ export const CharacterPageComponent = ({id}: {id: number}) => {
 
   return (
     <>
-      <Section title={titles.info} className={`character ${styles.character}`}>
+      <Section title={titles.characterInfo} className={`character ${styles.character}`}>
         <CharDetails />
         <CharInformation />
       </Section>
-      <Section title={titles.table}>
+      <Section title={titles.episodes}>
         {episodes?.length ? (
           <Table data={episodes} columns={["name", "episode", "air_date"]} />
         ) : (

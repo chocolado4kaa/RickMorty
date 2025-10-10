@@ -35,7 +35,7 @@ export const CharSection = () => {
   );
 
   return (
-    <Section title={SectionHeaders.characters}>
+    <Section title={SectionHeaders().characters}>
       <SearchBoxDiv
         value={search}
         onChange={(v) => {

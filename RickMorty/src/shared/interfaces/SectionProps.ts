@@ -1,5 +1,6 @@
 export type SectionProps = {
   title: {
+    href: string;
     id?: string;
     text: string;
   };
