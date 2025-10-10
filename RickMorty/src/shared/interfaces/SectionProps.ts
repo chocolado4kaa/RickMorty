@@ -1,7 +1,8 @@
 export type SectionProps = {
   title: {
-    id: string;
+    id?: string;
     text: string;
   };
   children?: React.ReactNode;
+  className?: string; 
 };

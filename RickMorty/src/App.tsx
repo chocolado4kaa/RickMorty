@@ -1,20 +1,16 @@
 import "./App.scss";
-import { CharSection } from "./components/sections/Characters/CharSection";
-import { Header } from "./components/sections/Header/Header";
-import { Hero } from "./components/sections/Hero/Hero";
-import { LocationsSection } from "./components/sections/Locations/LocationsSection";
-import { EpisodesSection } from "./components/sections/Episodes/EpisodesSection";
+import { MainPage } from "./components/pages/mainPage";
+import { Route, BrowserRouter as Router, Routes } from "react-router";
+import { CharacterPage } from "./components/pages/CharacterPage";
 
 function App() {
-  
   return (
-    <>
-      <Header />
-      <Hero />
-      <CharSection />
-      <LocationsSection />
-      <EpisodesSection />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/characters/:id" element={<CharacterPage />} />
+      </Routes>
+    </Router>
   );
 }
 
