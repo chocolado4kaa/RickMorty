@@ -1,0 +1,20 @@
+.character {
+  display: flex;
+  .characterDetails {
+      gap: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  .characterInfo {
+    display: flex;
+    flex-direction: column-reverse;
+    box-shadow: 0 0 0.5rem 2px rgba(209, 111, 211, 0.5607843137);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    .text {
+      text-align: left;
+    }
+  }
+}
