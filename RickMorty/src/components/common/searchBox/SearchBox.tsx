@@ -8,7 +8,7 @@ export const SearchBoxDiv: React.FC<SearchBox> = ({
   label = "Search",
 }) => {
   return (
-    <div className={styles.searchBox} style={{ marginBottom: 16 }}>
+    <div className={styles.searchBox}>
       <label>
         <span>{label}</span>
         <input
