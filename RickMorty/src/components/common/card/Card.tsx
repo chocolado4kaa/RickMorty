@@ -1,5 +1,6 @@
 import styles from "./card.module.scss";
 import type { Characters } from "../../../shared/interfaces/Characters";
+import { Link } from "react-router";
 
 export const Card = (char: Characters) => {
   const { created, episode, url, type, ...rest } = char;
@@ -22,18 +23,18 @@ export const Card = (char: Characters) => {
 
   return (
     <div className={styles.card} key={id}>
-      <header className={styles.header}>
-        <h3>{name}</h3>
-      </header>
-      <img src={image} alt={name} />
-      <div className={styles.info}>
+      <Link to={`/characters/${id}`}>
         <header className={styles.header}>
           <h3>{name}</h3>
         </header>
-        <CharacterInfo />
-      </div>
+        <img src={image} alt={name} />
+        <div className={styles.info}>
+          <header className={styles.header}>
+            <h3>{name}</h3>
+          </header>
+          <CharacterInfo />
+        </div>
+      </Link>
     </div>
   );
 };
-
-

@@ -25,6 +25,11 @@
   padding: 0 4rem;
   width: 100%;
   box-sizing: border-box;
+  &.character .container{
+    flex-direction: row;
+    gap: 2rem;
+    align-items: normal;
+  }
   .container {
     display: flex;
     flex-direction: column;

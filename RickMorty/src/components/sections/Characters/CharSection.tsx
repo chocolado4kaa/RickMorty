@@ -16,13 +16,23 @@ export const CharSection = () => {
 
   const { data, isLoading, error } = useQuery({
     queryKey: ["characters", page, search],
-    queryFn: () => fetchData(URLS.CHARACTERS, page, search) as Promise<CharactersResponse>,
+    queryFn: () =>
+      fetchData(URLS.CHARACTERS, page, search) as Promise<CharactersResponse>,
     placeholderData: keepPreviousData,
     staleTime: 30_000,
   });
 
   if (isLoading) return <p>{PageText.loading}</p>;
   if (error) return <p>{PageText.error}</p>;
+
+  const paginator = (
+    <PaginatorDiv
+      page={page}
+      info={data?.info}
+      onPrev={() => setPage((p) => p - 1)}
+      onNext={() => setPage((p) => p + 1)}
+    />
+  );
 
   return (
     <Section title={SectionHeaders.characters}>
@@ -35,18 +45,13 @@ export const CharSection = () => {
         placeholder="Search by name… (e.g., Rick)"
         label="Search characters"
       />
-
+      {paginator}
       <div className="list">
         {data?.results.map((char) => (
           <Card {...char} key={char.id} />
         ))}
       </div>
-      <PaginatorDiv
-        page={page}
-        info={data?.info}
-        onPrev={() => setPage((p) => p - 1)}
-        onNext={() => setPage((p) => p + 1)}
-      />
+      {paginator}
     </Section>
   );
 };

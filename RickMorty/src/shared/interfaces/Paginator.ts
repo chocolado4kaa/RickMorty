@@ -1,8 +1,8 @@
-import type { CharactersResponse } from "./CharactersResponse"; 
+import type { Info } from "./Info";
 
 export type Paginator = {
   page: number;
-  info?: CharactersResponse["info"];
+  info?: Info;
   onPrev: () => void;
   onNext: () => void;
 };
