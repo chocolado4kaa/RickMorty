@@ -5,5 +5,5 @@ export type SectionProps = {
     text: string;
   };
   children?: React.ReactNode;
-  className?: string; 
+  className?: string | ""; 
 };
