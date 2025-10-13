@@ -3,5 +3,5 @@ export const SectionHeaders = (characterName?: string) => ({
   locations: {href: "#locations", id: "locations", text: "Locations" },
   episodes: {href: "#episodes", id: "episodes", text: "Episodes" },
   characterInfo: {href: "#info", id: "info", text: characterName || "Info" },
-  mainPage: {href: "/", id: "main", text: "Main"},
+  mainPage: {href: "/RickMorty/", id: "main", text: "Main"},
 });

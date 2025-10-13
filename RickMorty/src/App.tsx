@@ -5,7 +5,7 @@ import { CharacterPage } from "./components/pages/CharacterPage";
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/characters/:id" element={<CharacterPage />} />
