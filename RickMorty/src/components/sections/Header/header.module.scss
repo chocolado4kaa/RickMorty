@@ -24,3 +24,9 @@
     }
   }
 }
+
+@media screen and (max-width: 48rem) {
+  .header .navbar ul a{
+    font-size: 2rem;
+  }
+}

@@ -20,7 +20,7 @@
 .section {
   max-width: 120rem;
   display: flex;
-  margin: 4rem auto;
+  margin: 2rem auto;
   flex-direction: column;
   padding: 0 4rem;
   width: 100%;
@@ -56,25 +56,39 @@
   width: 100%;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@media screen and (max-width: 75rem) {
+  html{
+    font-size: 80%;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media screen and (max-width: 60rem) {
+  html{
+    font-size: 70%;
   }
 }
 
-.card {
-  padding: 2em;
+@media screen and (max-width: 48rem) {
+  html{
+    font-size: 65%;
+  }
 }
 
-.read-the-docs {
-  color: #888;
+@media screen and (max-width: 42rem) {
+  html{
+    font-size: 50%;
+  }
+}
+
+@media screen and (max-width: 36rem) {
+  html{
+    font-size: 40%;
+  }
+  .section.character{
+    margin-top: 4rem;
+    .container{
+    flex-direction: column-reverse;
+
+  }
+  }
 }
