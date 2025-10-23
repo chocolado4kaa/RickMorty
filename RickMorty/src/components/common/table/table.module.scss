@@ -1,0 +1,37 @@
+.table {
+  border-radius: 1rem;
+  padding: 0.75rem;
+  color: #e5e7eb;
+  box-shadow: 0 0 0.5rem 2px rgba(209, 111, 211, 0.5607843137);
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 40rem;
+}
+
+.table thead th {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(0deg, #111827, #111827);
+  border-bottom: 1px solid #1f2937;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.table tbody td {
+  border-bottom: 1px solid #1f2937;
+  padding: 0.75rem;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.table tbody tr:nth-child(odd) {
+  background: rgba(255,255,255,.02);
+}
+.table tbody tr:hover {
+  background: rgba(255,255,255,.04);
+}
