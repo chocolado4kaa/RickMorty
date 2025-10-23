@@ -1,8 +1,23 @@
 import styles from "./card.module.scss";
 import type { Characters } from "../../../shared/interfaces/Characters";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { Link } from "react-router";
 
-export const Card = (char: Characters) => {
+interface CardProps extends Partial<Characters> {
+  isLoading?: boolean;
+}
+
+export const Card = ({ isLoading = false, ...char }: CardProps) => {
+  if (isLoading) {
+    return (
+      <div className={`${styles.card} skeleton`}>
+        <Skeleton width="80%" height="10%" count={5}/>
+        <Skeleton width="80%" height={50} />
+      </div>
+    );
+  }
+
   const { created, episode, url, type, ...rest } = char;
   const { id, name, image, ...info } = rest;
 

@@ -9,9 +9,11 @@ import { PaginatorDiv } from "../../common/paginator/paginator";
 import { SearchBoxDiv } from "../../common/searchBox/SearchBox";
 import { URLS } from "../../../shared/const/ApiLinks";
 import type { CharactersResponse } from "../../../shared/interfaces/CharactersResponse";
+import { toast } from "react-hot-toast";
 
 export const CharSection = () => {
   const [page, setPage] = useState(1);
+  const [inputValue, setInputValue] = useState("");
   const [search, setSearch] = useState("");
 
   const { data, isLoading, error } = useQuery({
@@ -20,10 +22,16 @@ export const CharSection = () => {
       fetchData(URLS.CHARACTERS, page, search) as Promise<CharactersResponse>,
     placeholderData: keepPreviousData,
     staleTime: 30_000,
+    retry: 1,
   });
+  
+  if (error) {
+    toast.error(error.message || PageText.error);
+    setInputValue("");
+    setSearch("");
+  }
 
-  if (isLoading) return <p>{PageText.loading}</p>;
-  if (error) return <p>{PageText.error}</p>;
+  const skeletons = Array.from({ length: data?.results.length || 18 });
 
   const paginator = (
     <PaginatorDiv
@@ -34,22 +42,27 @@ export const CharSection = () => {
     />
   );
 
+  const handleSearchKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      setSearch(inputValue);
+      setPage(1);
+    }
+  };
+
   return (
     <Section title={SectionHeaders.characters}>
       <SearchBoxDiv
-        value={search}
-        onChange={(v) => {
-          setSearch(v);
-          setPage(1);
-        }}
+        value={inputValue}
+        onChange={(v) => setInputValue(v)}
+        onKeyDown={handleSearchKey} 
         placeholder="Search by name… (e.g., Rick)"
         label="Search characters"
       />
       {paginator}
       <div className="list">
-        {data?.results.map((char) => (
-          <Card {...char} key={char.id} />
-        ))}
+        {isLoading
+          ? skeletons.map((_, i) => <Card key={i} isLoading />)
+          : data?.results.map((char) => <Card {...char} key={char.id} />)}
       </div>
       {paginator}
     </Section>
