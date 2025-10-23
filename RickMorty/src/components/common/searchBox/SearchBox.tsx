@@ -6,6 +6,7 @@ export const SearchBoxDiv: React.FC<SearchBox> = ({
   onChange,
   placeholder = "Search…",
   label = "Search",
+  onKeyDown,
 }) => {
   return (
     <div className={styles.searchBox}>
@@ -15,6 +16,7 @@ export const SearchBoxDiv: React.FC<SearchBox> = ({
           type="search"
           value={value}
           onChange={(e) => onChange(e.target.value)}
+          onKeyDown={onKeyDown}
           placeholder={placeholder}
           autoComplete="off"
         />

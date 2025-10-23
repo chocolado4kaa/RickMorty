@@ -17,6 +17,19 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+.skeleton {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  .react-loading-skeleton {
+    --base-color: #2a2d32;
+    --highlight-color: #3b3f46;
+  }
+}
+td.skeleton{
+  display: table-cell;
+}
+
 .section {
   max-width: 120rem;
   display: flex;
