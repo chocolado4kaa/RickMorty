@@ -7,5 +7,5 @@ import DataTableSection from "../../common/DataTableSection/DataTableSection";
 export const EpisodesSection = DataTableSection<Episodes, EpisodesResponse>({
   title: "episodes",
   apiUrl: URLS.EPISODES,
-  sectionHeader: SectionHeaders.episodes,
+  sectionHeader: SectionHeaders().episodes,
 });
