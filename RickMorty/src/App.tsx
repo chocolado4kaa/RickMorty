@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <Toaster
         position="top-center"
         toastOptions={{
@@ -18,7 +18,7 @@ function App() {
         }}
       />
       <Routes>
-        <Route path="/RickMorty/" element={<MainPage />} />
+        <Route index element={<MainPage />} />
         <Route path="/characters/:id" element={<CharacterPage />} />
       </Routes>
     </Router>
