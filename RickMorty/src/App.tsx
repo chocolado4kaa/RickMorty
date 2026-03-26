@@ -18,7 +18,7 @@ function App() {
         }}
       />
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/RickMorty/" element={<MainPage />} />
         <Route path="/characters/:id" element={<CharacterPage />} />
       </Routes>
     </Router>

@@ -1,44 +1,56 @@
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import { fetchData } from "../../../services/fetchData";
 import { Section } from "../../common/section/Section";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PaginatorDiv } from "../../common/paginator/paginator";
-import { SearchBoxDiv } from "../../common/searchBox/SearchBox";
 import { Table } from "../../common/table/table";
 import type { DataTableSectionProps } from "../../../shared/interfaces/DataTable";
 import type { Info } from "../../../shared/interfaces/Info";
 import toast from "react-hot-toast";
 import { PageText } from "../../../shared/const/PageText";
+import type { FilterValues } from "../../../shared/interfaces/filters";
+import { FilterPanel } from "../FilterPanel/FilterPanel";
 
-export default function DataTableSection<
-  T extends object,
-  R extends { results: T[]; info: Info }
->({
-  title,
+export default function DataTableSection<T extends object>({
+  filter,
   apiUrl,
   sectionHeader,
   excludeKeys = ["id", "url", "created"] as (keyof T)[],
 }: DataTableSectionProps<T>) {
   return function DataTable() {
     const [page, setPage] = useState(1);
-    const [inputValue, setInputValue] = useState("");
-    const [search, setSearch] = useState("");
+    const [debouncedPage, setDebouncedPage] = useState(1);
+    const [filters, setFilters] = useState<FilterValues>({});
 
-    const { data, isLoading, isError, error } = useQuery<R>({
-      queryKey: [apiUrl, page, search],
-      queryFn: () => fetchData(apiUrl, page, search) as Promise<R>,
+    useEffect(() => {
+      const timer = setTimeout(() => setDebouncedPage(page), 300);
+      return () => clearTimeout(timer);
+    }, [page]);
+
+    const { data, isLoading, error } = useQuery<{ results: T[]; info: Info }>({
+      queryKey: [apiUrl, debouncedPage, filters],
+      queryFn: () =>
+        fetchData(apiUrl, debouncedPage, filters) as Promise<{
+          results: T[];
+          info: Info;
+        }>,
       placeholderData: keepPreviousData,
       staleTime: 30_000,
       retry: 1,
     });
 
-    if (isError) {
-      toast.error(error.message || PageText.error);
-      setInputValue("");
-      setSearch("");
-    }
+    useEffect(() => {
+      if (error) toast.error(error.message || PageText.error);
+      setFilters({});
+    }, [error]);
+
+    const handleFilters = (newFilters: FilterValues) => {
+      setFilters(newFilters);
+      setPage(1);
+    };
+
     const keys = Object.keys(data?.results[0] || {}).filter(
-      (key) => !excludeKeys.includes(key as keyof T)
+      (key) => !excludeKeys.includes(key as keyof T),
     ) as (keyof T)[];
 
     const skeletons = new Array<T>(data?.results.length || 18).fill({} as T);
@@ -52,29 +64,14 @@ export default function DataTableSection<
       />
     );
 
-    const handleSearchKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === "Enter") {
-        setSearch(inputValue);
-        setPage(1);
-      }
-    };
-
     return (
       <Section title={sectionHeader}>
-        <SearchBoxDiv
-          value={inputValue}
-          onChange={(v) => setInputValue(v)}
-          onKeyDown={handleSearchKey}
-          placeholder={`search by ${title}`}
-          label={`Search ${title}`}
-        />
+        <FilterPanel fields={filter} onApply={handleFilters} />
         {paginator}
         <div className="list">
-          {isLoading ? (
+          {isLoading ?
             <Table data={skeletons} columns={keys} isLoading={true} />
-          ) : (
-            <Table data={data?.results || []} columns={keys} />
-          )}
+          : <Table data={data?.results || []} columns={keys} />}
         </div>
         {paginator}
       </Section>

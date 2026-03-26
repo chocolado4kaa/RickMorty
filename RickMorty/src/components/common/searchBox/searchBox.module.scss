@@ -1,8 +1,7 @@
 .searchBox {
-  width: 30%;
-  margin: 0 0 1rem;
-  border-radius: 0.5rem;
-  font-size: 1.5rem;
+  flex: 1;
+  min-width: 0;
+  margin: 0;
   span {
     color: #888;
     padding: 0;
@@ -23,10 +22,8 @@
         box-shadow: 0 0 0.5rem 2px #d16fd3;
     }
   }
-}
-
-@media screen and (max-width: 70rem) {
-  .searchBox{
-    width: 50%;
+  label {
+    display: flex;
+    flex-direction: column;
   }
 }
