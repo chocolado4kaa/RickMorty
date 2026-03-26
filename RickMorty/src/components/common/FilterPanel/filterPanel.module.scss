@@ -1,0 +1,71 @@
+.filterPanel {
+  width: 100%;
+  margin: 0 0 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  gap: 0.25rem;
+
+  span {
+    color: #888;
+    font-size: 1rem;
+    display: inline-block;
+    margin: 0 0 0.5rem;
+  }
+
+  select {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    box-shadow: 0 0 0.5rem 2px #d16fd38f;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: none;
+    cursor: pointer;
+    transition: all 0.25s;
+
+    &:focus {
+      box-shadow: 0 0 0.5rem 2px #d16fd3;
+    }
+  }
+}
+
+.reset {
+  width: 100%;
+  text-decoration: none;
+  align-self: flex-end;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  box-shadow: 0 0 0.5rem 2px rgba(209, 111, 211, 0.5607843137);
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: none;
+  cursor: pointer;
+  transition: all 0.25s;
+  height: 0px;
+  opacity: 0;
+  pointer-events: none;
+  padding: 0;
+  &.active {
+    height: 35px;
+    pointer-events: all;
+    opacity: 1;
+    padding: 0.5rem 1rem;
+  }
+  &:hover {
+    color: #d16fd3;
+  }
+}

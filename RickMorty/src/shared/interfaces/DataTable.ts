@@ -1,10 +1,12 @@
+import type { FilterFieldConfig } from "./filters";
+
 export type DataTableSectionProps<T> = {
-  title: string;
+  filter: FilterFieldConfig[];
   apiUrl: string;
   sectionHeader: {
+    id: string;
+    text: string;
     href: string;
-    id: string,
-    text: string
   };
   excludeKeys?: (keyof T)[];
 };
